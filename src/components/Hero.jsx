@@ -1,4 +1,5 @@
 import React from "react";
+import token from "../assets/token.png";
 
 function Hero() {
   return (
@@ -36,7 +37,7 @@ function Hero() {
           <div className="flex py-12">
             <div className="flex w-full gap-10">
               <img
-                src="src/assets/token.png"
+                src={token}
                 alt="CaliNation Token"
                 className="w-[337px] h-[396px] md:w-[437px] md:h-[474px] rounded-2xl"
               />

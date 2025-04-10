@@ -1,5 +1,5 @@
 import React from 'react';
-
+import roadmapLine from "../../assets/roadmap-line.png";
 function Roadmap() {
   // Define roadmap data for easier mapping
   const roadmapStages = [
@@ -45,7 +45,7 @@ function Roadmap() {
           {/* Timeline line - hidden on mobile, visible on larger screens */}
           <div className="relative hidden md:block">
             <div className="absolute w-full top-[65px]">
-              <img src="src/assets/roadmap-line.png" alt="Line" />
+              <img src={roadmapLine} alt="Line" />
             </div>
 
             <div className="flex justify-between relative">

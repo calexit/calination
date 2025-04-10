@@ -1,4 +1,5 @@
 import React from "react";
+import digitalAssets from "../assets/digital-assets.png";
 
 function TokenIntro() {
   return (
@@ -49,7 +50,7 @@ function TokenIntro() {
             </div>
             <div className="hidden md:w-1/3 md:flex items-center justify-center">
               <img
-                src="src/assets/digital-assets.png"
+                src={digitalAssets}
                 alt="Digital Economy"
                 className="max-h-full object-cover"
               />
