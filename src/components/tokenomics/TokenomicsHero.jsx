@@ -1,5 +1,5 @@
 import React from "react";
-
+import BuyCNTBtn from "../BuyCNTBtn";
 function TokenomicsHero() {
   return (
     <section className="relative min-h-[500px] md:h-[644px] bg-[#133E76] text-white py-12 md:py-16 [background:linear-gradient(180deg,rgba(198,143,0,0.7)_0%,rgba(5,53,99,0.7)_100%),url(https://c.animaapp.com/m9afjkrw6Ux2NE/img/image-placeholder.png)_50%_50%_/_cover]">
@@ -17,14 +17,8 @@ function TokenomicsHero() {
               economic freedom.
             </p>
 
-            <div className="flex">
-              <a
-                href="#"
-                className="bg-[#C68F00] hover:bg-[#b07e00] text-white font-semibold text-base md:text-lg px-10 md:px-16 py-3 md:py-4 rounded-md transition w-full sm:w-auto text-center"
-              >
-                Buy CNT
-              </a>
-            </div>
+            <BuyCNTBtn />
+
           </div>
           <div className="flex justify-center order-1 md:order-2">
             <img

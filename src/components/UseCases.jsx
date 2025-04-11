@@ -1,5 +1,5 @@
 import React from "react";
-
+import BuyCNTBtn from "./BuyCNTBtn";
 function UseCases() {
   const usesCases = [
     {
@@ -72,14 +72,8 @@ function UseCases() {
           ))}
         </div>
 
-        <div className="mt-16 flex justify-center">
-          <a 
-            href="#" 
-            className="bg-[#C68F00] hover:bg-[#b07e00] text-white font-semibold text-lg px-16 py-4 rounded-md transition"
-          >
-            Buy CNT
-          </a>
-        </div>
+        <BuyCNTBtn />
+
       </div>
     </section>
   );

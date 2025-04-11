@@ -5,7 +5,7 @@ import mediaFundingIcon from '../assets/media-funding-icon.png'
 import merchIcon from '../assets/merch-icon.png'
 import governanceIcon from '../assets/governance-icon.png'
 import moreIcon from '../assets/more-icon.png'
-
+import BuyCNTBtn from './BuyCNTBtn'
 function TokenUsage() {
   const useCases = [
     { 
@@ -59,15 +59,7 @@ function TokenUsage() {
             </div>
           ))}
         </div>
-        
-        <div className="mt-16 flex justify-center">
-          <a 
-            href="#" 
-            className="bg-[#C68F00] hover:bg-[#b07e00] text-white font-semibold text-lg px-16 py-4 rounded-md transition"
-          >
-            Buy CNT
-          </a>
-        </div>
+        <BuyCNTBtn />
       </div>
     </section>
   )
