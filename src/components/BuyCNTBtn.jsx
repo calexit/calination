@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useAccount, useConnect } from "wagmi";
+import WalletConnectIcon from '../assets/walletconnect-seeklogo.png';
 
 function BuyCNTBtn() {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -61,20 +62,17 @@ function BuyCNTBtn() {
                                     <img
                                         src={
                                             connector.name === 'WalletConnect'
-                                                ? 'https://walletconnect.com/favicon.ico'
-                                                : connector.name === 'MetaMask'
-                                                    ? 'https://metamask.io/favicon.ico'
-                                                    : 'https://metamask.io/favicon.ico' // Fallback for other wallets
+                                                ? WalletConnectIcon
+                                                : connector.name === 'Coinbase Wallet'
+                                                    ? 'https://wallet.coinbase.com/favicon.ico'
+                                                    : connector.name === 'MetaMask'
+                                                        ? 'https://metamask.io/favicon.ico'
+                                                        : connector.icon
                                         }
                                         alt={connector.name}
                                         className="w-6 h-6 mr-3"
                                     />
                                     <span>{connector.name}</span>
-                                    {connector.name === 'MetaMask' && (
-                                        <span className="ml-auto text-green-500 text-xs">
-                                            {typeof window !== 'undefined' && window.ethereum?.isMetaMask ? 'INSTALLED' : 'NOT INSTALLED'}
-                                        </span>
-                                    )}
                                 </button>
                             ))}
                         </div>

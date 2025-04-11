@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAccount, useConnect, useDisconnect } from 'wagmi';
+import WalletConnectIcon from '../assets/walletconnect-seeklogo.png';
 
 function Header({ transparent = false }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -58,7 +59,7 @@ function Header({ transparent = false }) {
       className={`fixed top-0 left-0 right-0 px-6 py-4 z-50 transition-all duration-300 ${transparent && !isScrolled
         ? "bg-transparent"
         : transparent && isScrolled ? "backdrop-blur-md"
-        : "bg-white"
+          : "bg-white"
         } ${isScrolled ? "shadow-md" : transparent ? "" : "shadow-sm"
         }`}
     >
@@ -68,7 +69,7 @@ function Header({ transparent = false }) {
             <img
               src="/logo.png"
               alt="Calexit Logo"
-              className={`h-14 ${transparent  ? "brightness-0 invert" : ""}`}
+              className={`h-14 ${transparent ? "brightness-0 invert" : ""}`}
             />
           </Link>
         </div>
@@ -96,7 +97,7 @@ function Header({ transparent = false }) {
           )}
           <a
             href="#"
-            className={`hidden md:inline-block ${transparent 
+            className={`hidden md:inline-block ${transparent
               ? "bg-white text-[#133E76]"
               : "bg-[#133E76] text-white"
               } px-10 py-4 rounded-md hover:bg-opacity-90 transition font-medium text-lg`}
@@ -188,18 +189,17 @@ function Header({ transparent = false }) {
                   <img
                     src={
                       connector.name === 'WalletConnect'
-                        ? 'https://walletconnect.com/favicon.ico'
-                        : connector.icon
+                        ? WalletConnectIcon
+                        : connector.name === 'Coinbase Wallet'
+                          ? 'https://wallet.coinbase.com/favicon.ico'
+                          : connector.name === 'MetaMask'
+                            ? 'https://metamask.io/favicon.ico'
+                            : connector.icon
                     }
                     alt={connector.name}
                     className="w-6 h-6 mr-3"
                   />
                   <span>{connector.name}</span>
-                  {connector.name === 'MetaMask' && (
-                    <span className="ml-auto text-green-500 text-xs">
-                      {typeof window !== 'undefined' && window.ethereum?.isMetaMask ? 'INSTALLED' : 'NOT INSTALLED'}
-                    </span>
-                  )}
                 </button>
               ))}
             </div>
