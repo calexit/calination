@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAccount, useConnect, useDisconnect } from 'wagmi';
-import WalletConnectIcon from '../assets/walletconnect-seeklogo.png';
+import WalletModal from './WalletModal';
 
 function Header({ transparent = false }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -29,6 +29,7 @@ function Header({ transparent = false }) {
     };
   }, []);
 
+  
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
@@ -44,26 +45,17 @@ function Header({ transparent = false }) {
     }
   }, [isConnected, isModalOpen]);
 
-  // Handle error display (e.g., user rejected the request)
-  useEffect(() => {
-    if (error) {
-      console.error('Connection error:', error);
-      if (error.message.includes('User rejected the request')) {
-        alert('You rejected the wallet connection request. Please try again and approve the connection.');
-      }
-    }
-  }, [error]);
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 px-6 py-4 z-50 transition-all duration-300 ${transparent && !isScrolled
         ? "bg-transparent"
-        : transparent && isScrolled ? "backdrop-blur-md"
+        : transparent && isScrolled ? "bg-white/10"
           : "bg-white"
         } ${isScrolled ? "shadow-md" : transparent ? "" : "shadow-sm"
         }`}
     >
-      <div className="container mx-auto flex justify-between items-center">
+      <div className="lg:container mx-auto flex justify-between items-center">
         <div className="flex items-center">
           <Link to="/" className="flex flex-col">
             <img
@@ -74,7 +66,7 @@ function Header({ transparent = false }) {
           </Link>
         </div>
 
-        <div className="hidden md:flex items-center space-x-12 ml-10">
+        <div className={`hidden md:flex items-center space-x-12 ${isConnected ? "2xl:ml-[250px]" : "ml-10"} `}>
           <Link
             to="/tokenomics"
             className={`${transparent ? "text-white" : "text-[#000000]"} hover:text-blue-300 text-[16px] font-medium`}
@@ -91,17 +83,17 @@ function Header({ transparent = false }) {
 
         <div>
           {isConnected && (
-            <span className="text-[#053563] hover:text-blue-800 text-[16px] font-medium py-2 hidden md:inline-block mr-10">
+            <span className={`${transparent ? "text-white" : "text-[#053563]"}  text-[16px] font-medium py-2 hidden md:inline-block lg:mr-10`}>
               {address.slice(0, 8)}...{address.slice(-6)}
             </span>
           )}
-          <a
-            href="#"
+          <button
             className={`hidden md:inline-block ${transparent
               ? "bg-white text-[#133E76]"
               : "bg-[#133E76] text-white"
               } px-10 py-4 rounded-md hover:bg-opacity-90 transition font-medium text-lg`}
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault();
               if (isConnected) {
                 disconnect();
               } else {
@@ -110,7 +102,7 @@ function Header({ transparent = false }) {
             }}
           >
             {isConnected ? "Disconnect" : "Connect"}
-          </a>
+          </button>
           <button
             className="md:hidden"
             onClick={toggleMobileMenu}
@@ -143,13 +135,13 @@ function Header({ transparent = false }) {
             >
               CLAIM NFT
             </Link>
-            <a
-              href="#"
+            <button
               className={`${transparent && !isScrolled
                 ? "bg-white text-[#133E76]"
                 : "bg-[#133E76] text-white"
                 } px-6 py-3 rounded-md hover:bg-opacity-90 transition font-medium text-base text-center mt-2`}
-              onClick={() => {
+              onClick={(e) => {
+                e.preventDefault();
                 if (isConnected) {
                   disconnect();
                 } else {
@@ -158,62 +150,12 @@ function Header({ transparent = false }) {
               }}
             >
               {isConnected ? "Disconnect" : "Connect"}
-            </a>
+            </button>
           </div>
         </div>
       )}
       {isModalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div className="bg-gray-800 text-white rounded-lg p-6 w-80">
-            <div className="flex justify-between items-center mb-4">
-              <h2 className="text-lg font-semibold">Connect Wallet</h2>
-              <button
-                onClick={() => setIsModalOpen(false)}
-                className="text-gray-400 hover:text-white"
-              >
-                ✕
-              </button>
-            </div>
-
-            {/* Wallet Options */}
-            <div className="space-y-3">
-              {connectors.map((connector) => (
-                <button
-                  key={connector.id}
-                  onClick={() => handleConnect(connector)}
-                  disabled={isLoading}
-                  className={`flex items-center w-full px-4 py-2 bg-gray-700 rounded-lg hover:bg-gray-600 transition ${isLoading ? 'opacity-50 cursor-not-allowed' : ''
-                    }`}
-                >
-                  {/* Wallet Icon */}
-                  <img
-                    src={
-                      connector.name === 'WalletConnect'
-                        ? WalletConnectIcon
-                        : connector.name === 'Coinbase Wallet'
-                          ? 'https://wallet.coinbase.com/favicon.ico'
-                          : connector.name === 'MetaMask'
-                            ? 'https://metamask.io/favicon.ico'
-                            : connector.icon
-                    }
-                    alt={connector.name}
-                    className="w-6 h-6 mr-3"
-                  />
-                  <span>{connector.name}</span>
-                </button>
-              ))}
-            </div>
-
-            {/* Error Message */}
-            {error && (
-              <p className="text-red-500 mt-4">
-                {error.message.includes('User rejected the request')
-                  ? 'You rejected the connection request. Please try again.'
-                  : error.message}
-              </p>
-            )}
-          </div>
-        </div>
+        <WalletModal connectors={connectors} handleConnect={handleConnect} isLoading={isLoading} error={error} setIsModalOpen={setIsModalOpen} />
       )}
     </header>
   );

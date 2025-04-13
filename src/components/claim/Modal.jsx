@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { ethers } from 'ethers';
 
 const ModalCard = ({ image, title, price }) => {
     return (
@@ -26,10 +27,55 @@ const ModalCard = ({ image, title, price }) => {
 const Modal = ({ isOpen, onClose, selectedCards, selectedCoins }) => {
 
     const [isClicked, setIsClicked] = useState(false);
-   
+    const [provider, setProvider] = useState(null);
+    const [signer, setSigner] = useState(null);
+    const [contract, setContract] = useState(null);
 
-    const handleConfirmClaim = () => {
-        setIsClicked(true);
+    useEffect(() => {
+        const init = async () => {
+            if (window.ethereum) {
+                const provider = new ethers.providers.Web3Provider(window.ethereum);
+                await provider.send("eth_requestAccounts", []);
+                const signer = provider.getSigner();
+                const contractAddress = "YOUR_CONTRACT_ADDRESS"; // Replace with your deployed contract address
+                const abi = [
+                    // Your contract ABI here (you can generate this from your smart contract)
+                    "function mintNFT(uint256 tokenURIIndex) public payable",
+                    "function getMintPrice() public view returns (uint256)",
+                ]; // Simplified ABI for demonstration
+
+                const contract = new ethers.Contract(contractAddress, abi, signer);
+                setProvider(provider);
+                setSigner(signer);
+                setContract(contract);
+            } else {
+                alert("Please install MetaMask!");
+            }
+        };
+        init();
+    }, []);
+
+    const handleConfirmClaim = async () => {
+        // setIsClicked(true);
+        if (!contract) return;
+
+        try {
+            const mintPrice = await contract.getMintPrice();
+            const totalPriceWei = ethers.utils.parseEther(selectedCards.reduce((sum, card) => sum + parseFloat(card.price), 0).toString());
+
+            for (const card of selectedCards) {
+                const tx = await contract.mintNFT(tokenURIs.indexOf(card.image), {
+                    value: mintPrice, // Ensure this matches the contract's mintPrice
+                });
+                await tx.wait();
+            }
+
+            setIsClicked(true);
+            alert("NFTs minted successfully!");
+        } catch (error) {
+            console.error("Error minting NFT:", error);
+            alert("Failed to mint NFT. Check console for details.");
+        }
     };
 
     const handleCancel = () => {

@@ -41,7 +41,7 @@ function UseCases() {
 
   return (
     <section className="py-8 md:pb-10 bg-white">
-      <div className="container mx-auto max-w-7xl">
+      <div className="container mx-auto max-w-[1400px]">
         {/* First 6 cards in 3 columns */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 mb-4 md:mb-5">
           {usesCases.map((useCase) => (
