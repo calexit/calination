@@ -1,6 +1,6 @@
 import React from "react";
 
-const TradingViewWidget = () => {
+export const TradingView = () => {
   return (
     <div className="w-full h-[500px]">
       <iframe
@@ -15,4 +15,4 @@ const TradingViewWidget = () => {
   );
 };
 
-export default TradingViewWidget;
+export default TradingView;

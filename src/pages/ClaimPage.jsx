@@ -12,7 +12,6 @@ import WalletModal from "../components/WalletModal";
 
 function ClaimNFT() {
     const [isNftClicked, setIsNftClicked] = useState(false);
-    const [isConnect, setIsConnect] = useState(false);
     const [selectedCards, setSelectedCards] = useState([]);
     const [isCardModalOpen, setIsCardModalOpen] = useState(false);
     const [selectedCoins, setSelectedCoins] = useState([]);
@@ -40,7 +39,11 @@ function ClaimNFT() {
     };
 
     const handleNftClick = (index) => {
-        setIsNftClicked(prev => !prev);
+        if (index) {
+            setIsNftClicked(true);
+        } else {
+            setIsNftClicked(false);
+        }
     };
 
     const handleClaim = () => {
@@ -53,30 +56,18 @@ function ClaimNFT() {
     };
 
     const handleConnect = () => {
-        if (isConnected) {
-        } else {
-            setIsModalOpen(true);
-        }
+        setIsModalOpen(true);
     }
 
-    useEffect(() => {
-        if (isConnected) {
-            setIsConnect(true);
-        }
-    }, [isConnected]);
 
     const handleWalletConnect = (connector) => {
         connect({ connector }); // Simply call connect without chaining
-        setIsConnect(true);
     };
 
     // Use useEffect to close the modal when the connection is successful
     useEffect(() => {
         if (isConnected && isModalOpen) {
             setIsModalOpen(false); // Close the modal when the wallet is connected
-        }
-        if (!isConnected) {
-            setIsConnect(false);
         }
     }, [isConnected, isModalOpen]);
 
@@ -85,7 +76,7 @@ function ClaimNFT() {
             <Header transparent={true} />
             <div id="claimNFT" className="bg-gradient-to-b from-[#1B2339] via-[#131522] to-[#212437]/90 pt-[88px]">
                 <section className="pb-[120px]">
-                    <div className={`relative z-20 ${!isConnect ? 'h-[540px]' : isError ? 'h-[440px]' : 'h-[840px] max-md:h-[1350px]'} w-full flex flex-col justify-center items-center text-center px-4`}>
+                    <div className={`relative z-20 ${!isConnected ? 'h-[540px]' : isError ? 'h-[440px]' : 'h-[840px] max-md:h-[1350px]'} w-full flex flex-col justify-center items-center text-center px-4`}>
                         <h1 className="text-white text-6xl font-bold mt-[100px] max-lg:text-5xl max-md:text-4xl max-sm:text-[46px]">
                             EXPLORE NFT COLLECTION
                         </h1>
@@ -98,7 +89,7 @@ function ClaimNFT() {
                             alt="Coin"
                             className="max-md:w-[366px] max-md:h-[366px] z-[-1] mt-[400px] object-cover absolute flex"
                         />
-                        {!isConnect ? (
+                        {!isConnected ? (
                             <button
                                 onClick={handleConnect}
                                 className='bg-[#C68F00] mt-20 py-[12px] text-[18px] uppercase text-white px-[80px] hover:bg-[#C68F00]/80 hover:scale-105 transition-all duration-300 rounded-[6px]'
@@ -164,8 +155,8 @@ function ClaimNFT() {
                         <div className="text-center w-full flex justify-between items-start mb-2">
                             {!isNftClicked ? (
                                 <div className="w-full grid gap-2 grid-cols-2 max-md:mt-10">
-                                    <span className="text-[24px] w-full text-[#C68F00]  max-md:hidden  font-bold text-start"></span>
-                                    <span className="text-[24px] w-full text-[#C68F00] font-bold text-start">NFT Use Cases:</span>
+                                    <span className="text-[14px] w-full text-transparent max-md:mt-[30px] text-start">Our NFTs go far beyond digital art — they're keys to the culture, community, and cause behind CaliNation. Every NFT connects users to real-world experiences, rewards, and governance.</span>
+                                    <span className="text-[24px] max-md:text-[20px] max-md:mt-[30px] w-full text-[#C68F00] font-bold text-start">NFT Use Cases:</span>
                                 </div>
                             ) : (
                                 <div className="w-full flex-col gap-2 flex md:grid md:grid-cols-2">

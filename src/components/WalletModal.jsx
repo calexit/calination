@@ -3,7 +3,7 @@ import WalletConnectIcon from '../assets/walletconnect-seeklogo.png';
 
 function WalletModal({ connectors, handleConnect, isLoading, error, setIsModalOpen }) {
     return (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+        <div className="fixed inset-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-[999]">
             <div className="bg-gray-800 text-white rounded-lg p-6 w-80">
                 <div className="flex justify-between items-center mb-4">
                     <h2 className="text-lg font-semibold">Connect Wallet</h2>
