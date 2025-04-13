@@ -7,6 +7,8 @@ import ImagePlaceholder from '../assets/Image_Placeholder.png'
 import Header from '../components/Header'
 import BuyCNTBtn from '../components/BuyCNTBtn'
 import { useAccount, useConnect } from "wagmi";
+import WalletConnectIcon from '../assets/walletconnect-seeklogo.png';
+import WalletModal from "../components/WalletModal";
 
 function ClaimNFT() {
     const [isNftClicked, setIsNftClicked] = useState(false);
@@ -21,9 +23,9 @@ function ClaimNFT() {
 
 
     const cards = [
-        { image: ImagePlaceholder, title: "#2", price: "1.63" },
-        { image: ImagePlaceholder, title: "#3", price: "1.63" },
-        { image: ImagePlaceholder, title: "#4", price: "1.63" }
+        { image: ImagePlaceholder, title: "#2", price: "0" },
+        { image: ImagePlaceholder, title: "#3", price: "0.01" },
+        { image: ImagePlaceholder, title: "#4", price: "0.005" }
     ];
 
     const handleCardSelect = (index) => {
@@ -35,6 +37,10 @@ function ClaimNFT() {
                 return [...prev, index];
             }
         });
+    };
+
+    const handleNftClick = (index) => {
+        setIsNftClicked(prev => !prev);
     };
 
     const handleClaim = () => {
@@ -52,6 +58,12 @@ function ClaimNFT() {
             setIsModalOpen(true);
         }
     }
+
+    useEffect(() => {
+        if (isConnected) {
+            setIsConnect(true);
+        }
+    }, [isConnected]);
 
     const handleWalletConnect = (connector) => {
         connect({ connector }); // Simply call connect without chaining
@@ -141,10 +153,10 @@ function ClaimNFT() {
                                 <h1 className="text-4xl font-bold text-left">ALL NFTs Are CNT<br />-Powered</h1>
                             )}
                             <div className="flex space-x-4">
-                                <button onClick={() => setIsNftClicked(true)} className={`px-[23px] py-[10px] text-[14px] text-white rounded  border-[1px] border-[#C68F00] ${isNftClicked ? 'bg-[#C68F00]  font-semibold' : 'bg-[#010613]'}`}>
+                                <button id="nft" onClick={() => handleNftClick(true)} className={`px-[23px] py-[10px] text-[14px] text-white rounded  border-[1px] border-[#C68F00] ${isNftClicked ? 'bg-[#C68F00]  font-semibold' : 'bg-[#010613]'}`}>
                                     NFTs
                                 </button>
-                                <button onClick={() => setIsNftClicked(false)} className={`px-[10px] py-[10px]  text-[14px] text-white rounded border-[1px] border-[#C68F00] ${isNftClicked ? 'bg-[#010613]' : 'bg-[#C68F00] font-semibold '}`}>
+                                <button id="cnt" onClick={() => handleNftClick(false)} className={`px-[10px] py-[10px]  text-[14px] text-white rounded border-[1px] border-[#C68F00] ${isNftClicked ? 'bg-[#010613]' : 'bg-[#C68F00] font-semibold '}`}>
                                     ALL NFTs Are CNT-Powered
                                 </button>
                             </div>
@@ -221,60 +233,7 @@ function ClaimNFT() {
                 />
             </div>
             {isModalOpen && (
-                <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-                    <div className="bg-gray-800 text-white rounded-lg p-6 w-80">
-                        <div className="flex justify-between items-center mb-4">
-                            <h2 className="text-lg font-semibold">Connect Wallet</h2>
-                            <button
-                                onClick={() => setIsModalOpen(false)}
-                                className="text-gray-400 hover:text-white"
-                            >
-                                ✕
-                            </button>
-                        </div>
-
-                        {/* Wallet Options */}
-                        <div className="space-y-3">
-                            {connectors.map((connector) => (
-                                <button
-                                    key={connector.id}
-                                    onClick={() => handleWalletConnect(connector)}
-                                    disabled={isLoading}
-                                    className={`flex items-center w-full px-4 py-2 bg-gray-700 rounded-lg hover:bg-gray-600 transition ${isLoading ? 'opacity-50 cursor-not-allowed' : ''
-                                        }`}
-                                >
-                                    {/* Wallet Icon */}
-                                    <img
-                                        src={
-                                            connector.name === 'WalletConnect'
-                                                ? 'https://walletconnect.com/favicon.ico'
-                                                : connector.name === 'MetaMask'
-                                                    ? 'https://metamask.io/favicon.ico'
-                                                    : 'https://metamask.io/favicon.ico' // Fallback for other wallets
-                                        }
-                                        alt={connector.name}
-                                        className="w-6 h-6 mr-3"
-                                    />
-                                    <span>{connector.name}</span>
-                                    {connector.name === 'MetaMask' && (
-                                        <span className="ml-auto text-green-500 text-xs">
-                                            {typeof window !== 'undefined' && window.ethereum?.isMetaMask ? 'INSTALLED' : 'NOT INSTALLED'}
-                                        </span>
-                                    )}
-                                </button>
-                            ))}
-                        </div>
-
-                        {/* Error Message */}
-                        {error && (
-                            <p className="text-red-500 mt-4">
-                                {error.message.includes('User rejected the request')
-                                    ? 'You rejected the connection request. Please try again.'
-                                    : error.message}
-                            </p>
-                        )}
-                    </div>
-                </div>
+                <WalletModal connectors={connectors} handleConnect={handleWalletConnect} isLoading={isLoading} error={error} setIsModalOpen={setIsModalOpen} />
             )}
         </>
     )

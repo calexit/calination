@@ -1,5 +1,5 @@
 import React from 'react'
-import parachuteIcon from '../assets/parachute-icon.png'
+import parachuteIcon from '../assets/parachute-icon.svg'
 import handshakeIcon from '../assets/handshake-icon.png' 
 import capIcon from '../assets/cap-icon.png'
 import networkIcon from '../assets/network-icon.png'
@@ -50,7 +50,6 @@ function Benefits() {
                 src={benefit.icon} 
                 alt={benefit.title} 
                 className="w-16 h-16 mb-6 object-contain"
-                style={{ filter: "brightness(0) saturate(100%) invert(77%) sepia(40%) saturate(2151%) hue-rotate(359deg) brightness(105%) contrast(102%)" }}
               />
               <h3 className="text-xl font-bold mb-3">{benefit.title}</h3>
               <p className="text-sm">{benefit.description}</p>

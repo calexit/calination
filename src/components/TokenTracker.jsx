@@ -1,5 +1,6 @@
 import React from 'react'
 import tokenChartImage from '../assets/token-tracker.png'
+import TradingViewWidget from './TradingView'
 
 function TokenTracker() {
   return (
@@ -23,9 +24,10 @@ function TokenTracker() {
           </div>
         </div>
         
-        <div className="max-w-6xl mx-auto rounded-lg overflow-hidden shadow-lg mb-8 border border-gray-200">
-          <div className="relative">
-            <img 
+        <div className="container mx-auto px-4">
+            <TradingViewWidget />
+          {/* <div className="relative"> */}
+            {/* <img 
               src={tokenChartImage} 
               alt="CNT Token Price Chart" 
               className="w-full h-auto"
@@ -42,7 +44,7 @@ function TokenTracker() {
                 Market cap
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
         
         {/* <div className="flex flex-wrap justify-center gap-6 mt-8">
