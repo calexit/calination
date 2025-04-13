@@ -135,7 +135,7 @@ function ClaimNFT() {
                     </div>
                 </section>
                 <section className="bg-[#010613] relative bg-opacity-90 border-[1px] rounded-[10px] border-[#FFB800] border-opacity-10">
-                    <div className={` z-20 h-[900px] max-lg:h-full w-full max-lg:mt-10 ${isNftClicked ? 'lg:mt-10' : 'lg:mt-0'} 2xl:mt-10 flex flex-col justify-center items-center text-center px-[10px] md:px-[100px] 2xl:px-[300px]`}>
+                    <div className={` z-20 h-[900px] max-lg:h-full w-full mt-10 flex flex-col justify-center items-center text-center px-[10px] md:px-[100px] 2xl:px-[300px]`}>
                         {/* Header Section */}
                         <div className="text-center w-full max-md:flex-col-reverse  flex justify-between items-start mb-3 gap-10 text-[#C68F00]">
                             {isNftClicked ? (
@@ -154,9 +154,8 @@ function ClaimNFT() {
                         </div>
                         <div className="text-center w-full flex justify-between items-start mb-2">
                             {!isNftClicked ? (
-                                <div className="w-full grid gap-2 grid-cols-2 max-md:mt-10">
-                                    <span className="text-[14px] w-full text-transparent max-md:mt-[30px] text-start">Our NFTs go far beyond digital art — they're keys to the culture, community, and cause behind CaliNation. Every NFT connects users to real-world experiences, rewards, and governance.</span>
-                                    <span className="text-[24px] max-md:text-[20px] max-md:mt-[30px] w-full text-[#C68F00] font-bold text-start">NFT Use Cases:</span>
+                                <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-2 max-md:mt-10">
+                                    <span className="md:col-start-2 text-[24px] w-full text-[#C68F00] max-md:text-[20px] font-bold text-start">NFT Use Cases:</span>
                                 </div>
                             ) : (
                                 <div className="w-full flex-col gap-2 flex md:grid md:grid-cols-2">
@@ -170,7 +169,7 @@ function ClaimNFT() {
                             {/* Coin Image Section */}
                             <section className="overflow-hidden bg-gray-50 lg:grid lg:grid-cols-2">
                                 <img
-                                    alt=""
+                                    alt="Visual representation related to NFT use cases"
                                     src={Blog}
                                     className="h-[400px] w-full object-cover lg:h-full"
                                 />
