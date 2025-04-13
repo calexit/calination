@@ -29,7 +29,7 @@ function Header({ transparent = false }) {
     };
   }, []);
 
-  
+
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
@@ -48,14 +48,14 @@ function Header({ transparent = false }) {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 px-6 py-4 z-50 transition-all duration-300 ${transparent && !isScrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${transparent && !isScrolled
         ? "bg-transparent"
-        : transparent && isScrolled ? "bg-white/10"
+        : transparent && isScrolled ? " "
           : "bg-white"
         } ${isScrolled ? "shadow-md" : transparent ? "" : "shadow-sm"
         }`}
     >
-      <div className="lg:container mx-auto flex justify-between items-center">
+      <div className={`${transparent && isScrolled ? "backdrop-blur " : ""} px-6 py-4 lg:container mx-auto flex justify-between items-center`}>
         <div className="flex items-center">
           <Link to="/" className="flex flex-col">
             <img
@@ -109,15 +109,14 @@ function Header({ transparent = false }) {
             aria-label="Toggle menu"
           >
             <div className="flex flex-col space-y-1.5">
-              <div className={`w-8 h-1 ${transparent && !isScrolled ? "bg-white" : "bg-[#133E76]"} rounded-sm`}></div>
-              <div className={`w-8 h-1 ${transparent && !isScrolled ? "bg-white" : "bg-[#133E76]"} rounded-sm`}></div>
-              <div className={`w-8 h-1 ${transparent && !isScrolled ? "bg-white" : "bg-[#133E76]"} rounded-sm`}></div>
+              <div className={`w-8 h-1 ${transparent ? "bg-white" : "bg-[#133E76]"} rounded-sm`}></div>
+              <div className={`w-8 h-1 ${transparent ? "bg-white" : "bg-[#133E76]"} rounded-sm`}></div>
+              <div className={`w-8 h-1 ${transparent ? "bg-white" : "bg-[#133E76]"} rounded-sm`}></div>
             </div>
           </button>
         </div>
       </div>
 
-      {/* Mobile menu dropdown */}
       {mobileMenuOpen && (
         <div className="md:hidden absolute top-full left-0 right-0 bg-white z-50 shadow-lg animate-fadeIn">
           <div className="container mx-auto py-4 px-6 flex flex-col space-y-4">
@@ -136,10 +135,9 @@ function Header({ transparent = false }) {
               CLAIM NFT
             </Link>
             <button
-              className={`${transparent && !isScrolled
-                ? "bg-white text-[#133E76]"
-                : "bg-[#133E76] text-white"
-                } px-6 py-3 rounded-md hover:bg-opacity-90 transition font-medium text-base text-center mt-2`}
+              className={`
+                bg-[#133E76] text-white
+                px-6 py-3 rounded-md hover:bg-opacity-90 transition font-medium text-base text-center mt-2`}
               onClick={(e) => {
                 e.preventDefault();
                 if (isConnected) {
@@ -154,6 +152,7 @@ function Header({ transparent = false }) {
           </div>
         </div>
       )}
+      {/* Mobile menu dropdown */}
       {isModalOpen && (
         <WalletModal connectors={connectors} handleConnect={handleConnect} isLoading={isLoading} error={error} setIsModalOpen={setIsModalOpen} />
       )}
