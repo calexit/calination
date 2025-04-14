@@ -22,9 +22,9 @@ function ClaimNFT() {
 
 
     const cards = [
-        { image: ImagePlaceholder, title: "#2", price: "0" },
-        { image: ImagePlaceholder, title: "#3", price: "0.01" },
-        { image: ImagePlaceholder, title: "#4", price: "0.005" }
+        { image: ImagePlaceholder, title: "1", price: "0" },
+        { image: ImagePlaceholder, title: "2", price: "0.0001" },
+        { image: ImagePlaceholder, title: "3", price: "0.00005" }
     ];
 
     const handleCardSelect = (index) => {
