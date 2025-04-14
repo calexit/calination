@@ -20,7 +20,7 @@ function RealAssetBacking() {
           <div className="font-['Poppins',Helvetica] text-base leading-[23px] text-center max-w-[950px]">
             <p>
               <span className="font-bold text-[#c58e00]">
-                CNT is anchored by Valiant Eagle Inc.'s
+              aCNT is anchored by its
               </span>
               <span className="text-white">
                 {" "}ownership in mineral-rich mines in the Congo, with confirmed reserves of lithium, cobalt, and rare earth elements — critical resources driving the tech, EV, and energy sectors.

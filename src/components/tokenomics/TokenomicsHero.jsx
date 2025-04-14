@@ -16,9 +16,9 @@ function TokenomicsHero() {
               than just crypto — it's a tool for sovereignty, empowerment, and
               economic freedom.
             </p>
-
-            <BuyCNTBtn />
-
+            <div className="flex justify-start">
+              <BuyCNTBtn />
+            </div>
           </div>
           <div className="flex justify-center order-1 md:order-2">
             <img

@@ -4,7 +4,6 @@ import vipEventsIcon from '../assets/vip-events-icon.png'
 import mediaFundingIcon from '../assets/media-funding-icon.png'
 import merchIcon from '../assets/merch-icon.png'
 import governanceIcon from '../assets/governance-icon.png'
-import moreIcon from '../assets/more-icon.png'
 import BuyCNTBtn from './BuyCNTBtn'
 function TokenUsage() {
   const useCases = [
@@ -32,11 +31,6 @@ function TokenUsage() {
       id: 5, 
       title: "Vote On Calexit Governance Proposals", 
       icon: governanceIcon 
-    },
-    { 
-      id: 6, 
-      title: "We Can Add Here More", 
-      icon: moreIcon 
     }
   ]
 
@@ -47,7 +41,7 @@ function TokenUsage() {
           What Can You Do With CNT?
         </h2>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 md:gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 md:gap-10">
           {useCases.map(useCase => (
             <div key={useCase.id} className="flex flex-col items-center text-center">
               <div className="bg-gradient-to-b from-[#FFB8001A] to-[#FFB800B2] p-6 rounded-full w-[170px] h-[170px] flex items-center justify-center mb-5 shadow-md">

@@ -1,8 +1,12 @@
 import React from 'react'
-import tokenChartImage from '../assets/token-tracker.png'
 import TradingViewWidget from './TradingView'
 
 function TokenTracker() {
+  // Define the URLs for the links
+  const uniswapUrl = "https://app.uniswap.org/explore/pools/base/0x086c01cd7891e8aed5fd27c01dcca6081b30318203aec3474c47464c030d9492";
+  const baseswapUrl = "https://baseswap.fi/swap";
+  const whitepaperUrl = "https://u.pcloud.link/publink/show?code=XZknKQ5Zy5ElUpY1E6hXy6wAUNYWnYiq7Xvk";
+
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
@@ -12,13 +16,28 @@ function TokenTracker() {
         
         <div className="flex justify-center mb-10">
           <div className="flex space-x-10 border-b border-gray-200 pb-2">
-            <a href="#" className="text-[#FFB800] font-medium text-lg border-b-2 border-[#FFB800] pb-2">
+            <a 
+              href={uniswapUrl} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-[#FFB800] font-medium text-lg border-b-2 border-[#FFB800] pb-2"
+            >
               Uniswap
             </a>
-            <a href="#" className="text-[#133E76] font-medium text-lg hover:text-[#FFB800]">
+            <a 
+              href={baseswapUrl} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-[#133E76] font-medium text-lg hover:text-[#FFB800]"
+            >
               Baseswap
             </a>
-            <a href="#" className="text-[#133E76] font-medium text-lg hover:text-[#FFB800]">
+            <a 
+              href={whitepaperUrl} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-[#133E76] font-medium text-lg hover:text-[#FFB800]"
+            >
               Whitepaper
             </a>
           </div>

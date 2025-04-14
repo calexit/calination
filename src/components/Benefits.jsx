@@ -5,6 +5,9 @@ import capIcon from '../assets/cap-icon.png'
 import networkIcon from '../assets/network-icon.png'
 import rocketIcon from '../assets/rocket-icon.png'
 
+// Import the same URL used in the BuyCNTBtn component
+const uniswapUrl = "https://app.uniswap.org/explore/pools/base/0x086c01cd7891e8aed5fd27c01dcca6081b30318203aec3474c47464c030d9492";
+
 function Benefits() {
   const benefitsList = [
     {
@@ -33,6 +36,11 @@ function Benefits() {
     }
   ]
 
+  // Function to handle opening the Uniswap URL in a new tab
+  const handleOpenUniswap = () => {
+    window.open(uniswapUrl, '_blank', 'noopener,noreferrer');
+  };
+
   return (
     <section className="py-16 bg-gray-50 rounded-2xl">
       <div className="container mx-auto px-4">
@@ -58,13 +66,13 @@ function Benefits() {
         </div>
         
         <div className="text-center mt-16">
-          <a 
-            href="#" 
+          <button 
+            onClick={handleOpenUniswap}
             className="bg-[#133E76] text-white px-12 py-4 rounded-lg font-medium inline-flex items-center hover:bg-[#2b4d8a] transition"
           >
             <img src={rocketIcon} alt="Rocket" className="w-5 h-5 mr-2" style={{ filter: "brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%)" }} />
             Claim your CNT
-          </a>
+          </button>
         </div>
       </div>
     </section>

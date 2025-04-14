@@ -16,7 +16,9 @@ function WhatIsCalexit() {
           </p>
           <div className="text-center">
             <a
-              href="#"
+              href="https://www.calexitnow.org"
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-white text-[#133E76] py-6 px-12 rounded-md text-[18px] font-semibold hover:bg-gray-100 transition inline-flex items-center"
             >
               <svg

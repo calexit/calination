@@ -51,7 +51,9 @@ function Hero() {
         </div>
         <div className="flex md:justify-start">
           <a
-            href="#"
+            href="https://www.calexitnow.org"
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-[#133E76] w-full justify-center md:w-auto text-white px-8 py-4 rounded-md font-medium hover:bg-blue-900 transition inline-flex items-center text-lg"
           >
             <svg

@@ -4,6 +4,9 @@ import Blog from '../assets/Blog.png'
 import Card from '../components/claim/Card'
 import Modal from '../components/claim/Modal'
 import ImagePlaceholder from '../assets/Image_Placeholder.png'
+import FoundingFlame from '../assets/thumb_founding flame.png'
+import GoldenState from '../assets/thumb_golden state.png'
+import HorizonBuilder from '../assets/thumb_horizon bulider.png'
 import Header from '../components/Header'
 import BuyCNTBtn from '../components/BuyCNTBtn'
 import { useAccount, useConnect } from "wagmi";
@@ -21,9 +24,9 @@ function ClaimNFT() {
 
 
     const cards = [
-        { image: ImagePlaceholder, title: "#1", price: "0" },
-        { image: ImagePlaceholder, title: "#2", price: "0.01" },
-        { image: ImagePlaceholder, title: "#3", price: "0.005" }
+        { image: FoundingFlame, title: "#1", price: "0" },
+        { image: GoldenState, title: "#2", price: "0.01" },
+        { image: HorizonBuilder, title: "#3", price: "0.005" }
     ];
 
     const handleCardSelect = (index) => {
@@ -79,10 +82,6 @@ function ClaimNFT() {
                         <h1 className="text-white text-6xl font-bold mt-[100px] max-lg:text-5xl max-md:text-4xl max-sm:text-[46px]">
                             EXPLORE NFT COLLECTION
                         </h1>
-                        <p className="text-white text-[18px] max-w-[800px] max-sm:text-[14px] mt-10 max-md:text-[16px]">
-                            AClaim Portal UI Wallet connect prompt, eligibility check, token/NFT preview, "Claim
-                            Now" button, transaction success/fail message
-                        </p>
                         <img
                             src={Coins}
                             alt="Coin"

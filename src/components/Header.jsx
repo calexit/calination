@@ -11,6 +11,9 @@ function Header({ transparent = false }) {
   const { disconnect } = useDisconnect();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  // Whitepaper URL
+  const whitepaperUrl = "https://u.pcloud.link/publink/show?code=XZknKQ5Zy5ElUpY1E6hXy6wAUNYWnYiq7Xvk";
+
   // Add scroll event listener
   useEffect(() => {
     const handleScroll = () => {
@@ -79,6 +82,14 @@ function Header({ transparent = false }) {
           >
             CLAIM NFT
           </Link>
+          <a
+            href={whitepaperUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${transparent ? "text-white" : "text-[#000000]"} hover:text-blue-300 text-[16px] font-medium`}
+          >
+            WHITEPAPER
+          </a>
         </div>
 
         <div>
@@ -134,6 +145,15 @@ function Header({ transparent = false }) {
             >
               CLAIM NFT
             </Link>
+            <a
+              href={whitepaperUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#000000] hover:text-blue-800 text-[16px] font-medium py-2"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              WHITEPAPER
+            </a>
             <button
               className={`
                 bg-[#133E76] text-white
