@@ -7,29 +7,60 @@ function Roadmap() {
       status: "Completed",
       statusType: "completed",
       items: [
-        "Token + NFT Contract Deployment",
-        "Launch Figma Site + Mint Portal",
+        "Finalize CNT white paper and pitch decks",
+        "Legal entity formation and compliance setup",
+        "Complete token architecture and smart contract audits",
+        "Launch of CaliNation website and governance portal",
+        "Strategic partnerships secured (media, mining, real estate)",
+        "Treasury asset mapping and valuation models completed",
+        "Private round fundraising initiated",
+        "Begin NFT utility ecosystem buildout via Fungy",
+        "Official announcement of Calexit-aligned economic goals"
       ],
     },
     {
       status: "Coming Soon",
       statusType: "coming-soon-1",
-      items: ["Claim Portal Goes Live", "CNT Listed on DEX + CoinGecko"],
+      items: [
+        "Public token sale (IDO / launchpad campaigns)",
+        "CNT listings on major DEXs and CEXs",
+        "Launch of staking + yield smart contracts",
+        "Initial DAO formation and first governance vote",
+        "Fungy NFT Marketplace public beta",
+        "Tokenized real-world asset offerings (hotel, jet, studio NFTs)",
+        "Begin revenue streaming from real assets into treasury",
+        "Developer SDK for CNT integrations released",
+        "Partnership announcements with telecom, OTT, and media platforms",
+        "Phase 1 of immersive theater chain build begins"
+      ],
     },
     {
       status: "Coming Soon",
       statusType: "coming-soon-2",
       items: [
-        "First NFT Utility Drop (CaliDAO Citizen)",
-        "Ms. CaliNation Pageant Launch",
+        "Launch of OTT app (XMG) with CNT payment system",
+        "Full release of VE Gaming titles with CNT in-game integration",
+        "Additional real estate tokenizations (multifamily, resort assets)",
+        "Expansion of Neti Bank: Debit cards, crypto lending, fiat onramps",
+        "DAO-based voting on large-scale funding initiatives",
+        "CNT integration into artist ecosystems (Franchise X, VE Publishing)",
+        "Real-world Calexit economic outreach and lobbying begins",
+        "CNT-native stablecoin development (e.g., cUSD) feasibility study"
       ],
     },
     {
       status: "Coming Soon",
       statusType: "coming-soon-3",
       items: [
-        "IRL Events + DAO Voting System",
-        "Future drops tied to mining, film, and Calexit governance",
+        "Multiple immersive theaters operational",
+        "DAO-managed real estate fund generating yield for stakers",
+        "Cross-chain and Layer 2 deployments for CNT",
+        "CNT-backed stablecoin (cUSD) launched",
+        "CNT index fund or ETF proposal submitted",
+        "Establish CaliNation digital citizenship framework",
+        "DAO proposal to formally fund Calexit referendum marketing",
+        "Launch of physical CaliNation embassies (retail, cultural, banking)",
+        "CNT becomes recognized by third-party vendors and jurisdictions"
       ],
     },
   ];
