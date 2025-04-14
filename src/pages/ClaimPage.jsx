@@ -7,7 +7,6 @@ import ImagePlaceholder from '../assets/Image_Placeholder.png'
 import Header from '../components/Header'
 import BuyCNTBtn from '../components/BuyCNTBtn'
 import { useAccount, useConnect } from "wagmi";
-import WalletConnectIcon from '../assets/walletconnect-seeklogo.png';
 import WalletModal from "../components/WalletModal";
 
 function ClaimNFT() {
@@ -22,9 +21,9 @@ function ClaimNFT() {
 
 
     const cards = [
-        { image: ImagePlaceholder, title: "1", price: "0" },
-        { image: ImagePlaceholder, title: "2", price: "0.0001" },
-        { image: ImagePlaceholder, title: "3", price: "0.00005" }
+        { image: ImagePlaceholder, title: "#1", price: "0" },
+        { image: ImagePlaceholder, title: "#2", price: "0.01" },
+        { image: ImagePlaceholder, title: "#3", price: "0.005" }
     ];
 
     const handleCardSelect = (index) => {

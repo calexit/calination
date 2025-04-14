@@ -4,21 +4,16 @@ import { walletConnect, metaMask, coinbaseWallet } from '@wagmi/connectors';
 
 const projectId = '26dec469283ee31ae98465e63aeb64f8'; // Get this from WalletConnect Cloud (https://cloud.walletconnect.com)
 
-// Public RPC for Sepolia (using Alchemy's public endpoint as an example)
-const sepoliaPublicRpc = 'https://sepolia.infura.io'
-// You might want to get your own free key from Alchemy/Infura for better reliability
-
 export const config = createConfig({
-  chains: [mainnet, sepolia], // Include mainnet and sepolia
+  chains: [mainnet, sepolia], // Add the chains you want to support
   transports: {
     [mainnet.id]: http(),
-    // Use a specific public RPC for Sepolia
-    [sepolia.id]: http(sepoliaPublicRpc),
+    [sepolia.id]: http(),
   },
   connectors: [
     walletConnect({
       projectId,
-      showQrModal: true,
+      showQrModal: true, // This will show the QR code modal like in your screenshot
     }),
     metaMask(),
     coinbaseWallet(),
