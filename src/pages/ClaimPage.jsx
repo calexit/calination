@@ -30,6 +30,8 @@ function ClaimNFT() {
     ];
 
     const handleCardSelect = (index) => {
+        if (!isConnected) return; // Prevent selection if wallet is not connected
+        
         setSelectedCards(prev => {
             const isAlreadySelected = prev.includes(index);
             if (isAlreadySelected) {
@@ -78,7 +80,7 @@ function ClaimNFT() {
             <Header transparent={true} />
             <div id="claimNFT" className="bg-gradient-to-b from-[#1B2339] via-[#131522] to-[#212437]/90 pt-[88px]">
                 <section className="pb-[120px]">
-                    <div className={`relative z-20 ${!isConnected ? 'h-[540px]' : isError ? 'h-[440px]' : 'h-[840px] max-md:h-[1350px]'} w-full flex flex-col justify-center items-center text-center px-4`}>
+                    <div className={`relative z-20 ${isError ? 'h-[440px]' : 'h-[840px] max-md:h-[1350px]'} w-full flex flex-col justify-center items-center text-center px-4`}>
                         <h1 className="text-white text-6xl font-bold mt-[100px] max-lg:text-5xl max-md:text-4xl max-sm:text-[46px]">
                             EXPLORE NFT COLLECTION
                         </h1>
@@ -87,37 +89,27 @@ function ClaimNFT() {
                             alt="Coin"
                             className="max-md:w-[366px] max-md:h-[366px] z-[-1] mt-[400px] object-cover absolute flex"
                         />
-                        {!isConnected ? (
-                            <button
-                                onClick={handleConnect}
-                                className='bg-[#C68F00] mt-20 py-[12px] text-[18px] uppercase text-white px-[80px] hover:bg-[#C68F00]/80 hover:scale-105 transition-all duration-300 rounded-[6px]'
-                            >
-                                Connect
-                            </button>
-                        ) : isError ? (
-                            <div className="w-full mt-20 flex items-center justify-center p-2">
-                                <div className="flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="rgb(239,68,68)" viewBox="0 0 24 24" stroke-width="1.5" stroke="black" class="size-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                    </svg>
-
-                                    <span className="text-sm ml-2 text-red-500">
-                                        Figma ipsum component variant main layer. Align style rotate move
-                                    </span>
-                                </div>
+                        
+                        <div>
+                            <div className="mt-20 flex max-md:relative max-md:flex-col gap-4">
+                                {cards.map((card, index) => (
+                                    <Card
+                                        key={index}
+                                        {...card}
+                                        isSelected={selectedCards.includes(index)}
+                                        onSelect={() => handleCardSelect(index)}
+                                    />
+                                ))}
                             </div>
-                        ) : (
-                            <div>
-                                <div className="mt-20 flex max-md:relative max-md:flex-col gap-4">
-                                    {cards.map((card, index) => (
-                                        <Card
-                                            key={index}
-                                            {...card}
-                                            isSelected={selectedCards.includes(index)}
-                                            onSelect={() => handleCardSelect(index)}
-                                        />
-                                    ))}
-                                </div>
+                            
+                            {!isConnected ? (
+                                <button
+                                    onClick={handleConnect}
+                                    className='bg-[#C68F00] mt-20 py-[12px] text-[18px] uppercase text-white px-[80px] hover:bg-[#C68F00]/80 hover:scale-105 transition-all duration-300 rounded-[6px]'
+                                >
+                                    Connect to Claim
+                                </button>
+                            ) : (
                                 <button
                                     onClick={handleClaim}
                                     disabled={selectedCards.length === 0}
@@ -128,8 +120,8 @@ function ClaimNFT() {
                                 >
                                     Claim
                                 </button>
-                            </div>
-                        )}
+                            )}
+                        </div>
                     </div>
                 </section>
                 <section className="bg-[#010613] relative bg-opacity-90 border-[1px] rounded-[10px] border-[#FFB800] border-opacity-10">
