@@ -25,10 +25,10 @@ export const TradingView = () => {
         id="dextools-widget"
         title="DEXTools Trading Chart"
         width="500"
-        style={{ display: isLoading ? 'none' : 'block' }}
-        onLoad={() => setIsLoading(false)}
         height="400"
-        src="https://www.dextools.io/widget-chart/en/base/pe-light/0x086c01cd7891e8aed5fd27c01dcca6081b30318203aec3474c47464c030d9492?theme=light&chartType=2&chartResolution=30&drawingToolbars=false"
+        style={{ border: "none" }}
+        onLoad={() => setIsLoading(false)}
+        src="https://www.dextools.io/widget-chart/en/solana/pe-light/CvMmJj7Cbx73yGPtuDCq9DKNAE4sFuuR5q26w9562x8Y?theme=light&chartType=2&chartResolution=30&drawingToolbars=false"
       ></iframe>
     </div>
   );
