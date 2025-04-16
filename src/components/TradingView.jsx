@@ -24,8 +24,8 @@ export const TradingView = () => {
       <iframe
         id="dextools-widget"
         title="DEXTools Trading Chart"
-        width="500"
-        height="400"
+        width="100%"
+        height="100%"
         style={{ border: "none" }}
         onLoad={() => setIsLoading(false)}
         src="https://www.dextools.io/widget-chart/en/solana/pe-light/CvMmJj7Cbx73yGPtuDCq9DKNAE4sFuuR5q26w9562x8Y?theme=light&chartType=2&chartResolution=30&drawingToolbars=false"
