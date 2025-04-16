@@ -9,7 +9,7 @@ export const TradingView = () => {
         height="100%"
         title="CNT Trading Chart"
         loading="lazy"
-        sandbox="allow-scripts allow-same-origin allow-popups"
+        allow="fullscreen"
         referrerPolicy="no-referrer"
       ></iframe>
     </div>
