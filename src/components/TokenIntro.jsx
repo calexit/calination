@@ -18,7 +18,7 @@ function TokenIntro() {
           </p>
         </div>
 
-        <div className="max-w-7xl mx-auto bg-[#FBFAF9] border-b drop-shadow-sm border-b-gray-200 rounded-lg overflow-hidden">
+        <div className="max-w-[1400px] mx-auto bg-[#FBFAF9] border-b drop-shadow-sm border-b-gray-200 rounded-lg overflow-hidden">
           <div className="flex">
             <div className="flex flex-col justify-end md:w-2/3 md:p-10">
               <h3 className="text-[20px] md:text-2xl font-medium md:font-semibold text-[#00194B] mb-5">
@@ -52,7 +52,7 @@ function TokenIntro() {
               <img
                 src={digitalAssets}
                 alt="Digital Economy"
-                className="max-h-full object-cover"
+                className="max-h-full object-cover filter grayscale"
               />
             </div>
           </div>

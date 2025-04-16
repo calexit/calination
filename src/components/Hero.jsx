@@ -1,5 +1,6 @@
 import React from "react";
 import token from "../assets/token.png";
+import BuyCNTBtn from "./BuyCNTBtn";
 
 function Hero() {
   return (
@@ -49,9 +50,11 @@ function Hero() {
             </div>
           </div>
         </div>
-        <div className="flex md:justify-start">
+        <div className="flex flex-col md:flex-row gap-4 md:justify-start">
           <a
-            href="#"
+            href="https://www.calexitnow.org"
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-[#133E76] w-full justify-center md:w-auto text-white px-8 py-4 rounded-md font-medium hover:bg-blue-900 transition inline-flex items-center text-lg"
           >
             <svg
@@ -89,6 +92,14 @@ function Hero() {
             </svg>
             Join Movement
           </a>
+          
+          {/* Buy CNT Button */}
+          <button
+            onClick={() => window.open("https://app.uniswap.org/explore/pools/base/0x086c01cd7891e8aed5fd27c01dcca6081b30318203aec3474c47464c030d9492", "_blank", "noopener,noreferrer")}
+            className="bg-[#C68F00] hover:bg-[#b07e00] text-white font-semibold text-lg px-[80px] py-[20px] rounded-md transition"
+          >
+            Buy CNT
+          </button>
         </div>
       </div>
     </section>

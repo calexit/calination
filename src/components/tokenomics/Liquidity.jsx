@@ -1,5 +1,5 @@
 import React from 'react';
-
+import BuyCNTBtn from '../BuyCNTBtn';
 function Liquidity() {
   // Data for the bullet points to enable mapping
   const trustBuildingPoints = [
@@ -35,11 +35,8 @@ function Liquidity() {
           </div>
         </div>
 
-        <div className="flex justify-center mt-16">
-          <button className="w-[237px] h-[72px] bg-[#c58e00] hover:bg-[#b07e00] rounded-md font-['Poppins',Helvetica] font-semibold text-white text-lg">
-            Buy CNT
-          </button>
-        </div>
+        <BuyCNTBtn />
+
       </div>
     </section>
   );
