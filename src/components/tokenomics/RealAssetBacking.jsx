@@ -20,10 +20,10 @@ function RealAssetBacking() {
           <div className="font-['Poppins',Helvetica] text-base leading-[23px] text-center max-w-[950px]">
             <p>
               <span className="font-bold text-[#c58e00]">
-              aCNT is anchored by its
+              CNT is anchored by its
               </span>
               <span className="text-white">
-                {" "}ownership in mineral-rich mines in the Congo, with confirmed reserves of lithium, cobalt, and rare earth elements — critical resources driving the tech, EV, and energy sectors.
+                {" "}partnerships consisting of mineral-rich mines in the Congo, with confirmed reserves of lithium, cobalt, and rare earth elements — critical resources driving the tech, EV, and energy sectors.
               </span>
             </p>
             <p className="text-white text-[14px]">
