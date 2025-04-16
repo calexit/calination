@@ -10,7 +10,7 @@ export const TradingView = () => {
         console.log("DEXTools chart loading is taking longer than expected");
       }
     }, 5000);
-    
+
     return () => clearTimeout(timer);
   }, [isLoading]);
 
@@ -22,16 +22,13 @@ export const TradingView = () => {
         </div>
       )}
       <iframe
-        src="https://www.dextools.io/widget-embed/?pair=0x086c01cd7891e8aed5fd27c01dcca6081b30318203aec3474c47464c030d9492&chain=base&theme=light"
-        width="100%"
-        height="100%"
-        title="CNT Trading Chart"
-        style={{ 
-          border: 'none',
-          display: isLoading ? 'none' : 'block' 
-        }}
+        id="dextools-widget"
+        title="DEXTools Trading Chart"
+        width="500"
+        style={{ display: isLoading ? 'none' : 'block' }}
         onLoad={() => setIsLoading(false)}
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        height="400"
+        src="https://www.dextools.io/widget-chart/en/base/pe-light/0x086c01cd7891e8aed5fd27c01dcca6081b30318203aec3474c47464c030d9492?theme=light&chartType=2&chartResolution=30&drawingToolbars=false"
       ></iframe>
     </div>
   );
